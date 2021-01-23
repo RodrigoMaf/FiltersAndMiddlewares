@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Poc.FilterMiddleware.Api.Configurations;
-using Poc.FilterMiddleware.Api.Configurations.Filters;
+using Poc.FilterMiddleware.Api.Configurations.Middlewares;
 
 namespace Poc.FilterMiddleware.Api
 {
@@ -38,7 +39,12 @@ namespace Poc.FilterMiddleware.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IOptionsMonitor<List<OpenApiInfo>> optionsMonitor)
+        public void Configure(
+                                IApplicationBuilder app, 
+                                IWebHostEnvironment env, 
+                                IOptionsMonitor<List<OpenApiInfo>> optionsMonitor, 
+                                ILoggerFactory loggerFactory
+                             )
         {
 
             if (env.IsDevelopment())
@@ -46,7 +52,10 @@ namespace Poc.FilterMiddleware.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            loggerFactory.UseSerilog(Configuration);
+
             app
+                .UseMiddleware<ReferenceMiddleware>()
                 .UseHttpsRedirection()
                 .UseRouting()
                 .UseAuthorization()
@@ -54,7 +63,9 @@ namespace Poc.FilterMiddleware.Api
                 {
                     endpoints.MapControllers();
                 })
-                .UseSwagger(optionsMonitor);
+                .UseSwagger(optionsMonitor)
+                
+                ;
         }
     }
 }

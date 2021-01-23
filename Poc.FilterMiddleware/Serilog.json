@@ -1,0 +1,27 @@
+{
+  "Serilog": {
+    "Using": [],
+    "MinimumLevel": {
+      "Default": "Verbose",
+      "Override": {
+        "Microsoft": "Debug",
+        "System": "Verbose"
+      }
+    },
+    "Enrich": [ "FromLogContext" ],   
+    "WriteTo": [
+      {
+        "Name": "RollingFile",
+        "Args": {
+          "formatter": "Serilog.Formatting.Compact.CompactJsonFormatter, Serilog.Formatting.Compact",
+          "restrictedToMinimumLevel": "Debug",
+          "LoggingLevelSwitch": "Debug",
+          "pathFormat": "Logs/Poc.FilterMiddleware.Api-{Date}.txt"
+          //"retainedFileCountLimit": 2000,
+          //"fileSizeLimitBytes": 1073741824,
+          //"outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] ({ThreadId}) ({MachineName}) ({Version}) ({Is64BitProcess}) ({Is64BitOperatingSystem}) ({OSVersion}) ({ProcessorCount}) ({UserDomainName}) ({StackTrace})  {Message:lj}{NewLine}{Exception}"
+        }
+      }
+    ]
+  }
+}
