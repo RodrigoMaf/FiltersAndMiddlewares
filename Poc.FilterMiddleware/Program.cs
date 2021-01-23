@@ -24,6 +24,7 @@ namespace Poc.FilterMiddleware.Api
                         .AddJsonFile($"appsettings.{context.HostingEnvironment.EnvironmentName}.json", optional: true)
                         .AddJsonFile("Swagger.json", optional: false)
                         .AddJsonFile("Serilog.json", optional: false)
+                        .AddJsonFile("Culture.json", optional: false)
                         .AddEnvironmentVariables("ASPNETCORE_");
                 })
                 .ConfigureWebHostDefaults(webBuilder =>

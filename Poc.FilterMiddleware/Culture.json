@@ -1,0 +1,8 @@
+{
+  "RequestLocalizationOptions": {
+    "SupportedCultures": [ "pt-BR", "en-US" ], // O Primeiro item da lista será o default
+    "SupportedUICultures": [ "pt-BR", "en-US" ], // O Primeiro item da lista será o default
+    "FallBackToParentCultures": true,
+    "FallBackToParentUICultures": true
+  }
+}

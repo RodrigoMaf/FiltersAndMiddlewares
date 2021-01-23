@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Poc.FilterMiddleware.Api.Configurations;
+using Poc.FilterMiddleware.Api.Configurations.Filters;
 using Poc.FilterMiddleware.Api.Configurations.Middlewares;
 
 namespace Poc.FilterMiddleware.Api
@@ -30,9 +31,11 @@ namespace Poc.FilterMiddleware.Api
                 .ConfigureSettingsSwagger(Configuration)
                 .RegisterSwagger(Configuration)
                 .RegisterValidations()
+                .AddCultureService(Configuration)
                 .AddControllers(o => 
                 {
-                    // adicionando o filtro em contexto global
+                    // adicionando o filtro em contexto global                    
+                    o.Filters.Add<CultureFormatFilterAttribute>();
                     //o.Filters.Add<ModelStateValidationFilterAttribute>();
                     //o.Filters.Add<ExceptionServiceFilterAttribute>();
                 });
@@ -43,7 +46,8 @@ namespace Poc.FilterMiddleware.Api
                                 IApplicationBuilder app, 
                                 IWebHostEnvironment env, 
                                 IOptionsMonitor<List<OpenApiInfo>> optionsMonitor, 
-                                ILoggerFactory loggerFactory
+                                ILoggerFactory loggerFactory,
+                                IOptionsMonitor<RequestLocalizationOptions> rloOptions
                              )
         {
 
@@ -64,7 +68,7 @@ namespace Poc.FilterMiddleware.Api
                     endpoints.MapControllers();
                 })
                 .UseSwagger(optionsMonitor)
-                
+                .UseCulture(rloOptions)
                 ;
         }
     }
