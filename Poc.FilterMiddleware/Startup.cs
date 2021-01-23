@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Poc.FilterMiddleware.Api.Configurations;
+using Poc.FilterMiddleware.Api.Configurations.Filters;
 
 namespace Poc.FilterMiddleware.Api
 {
@@ -27,7 +28,10 @@ namespace Poc.FilterMiddleware.Api
                 .RegisterFeatures()
                 .ConfigureSettingsSwagger(Configuration)
                 .RegisterSwagger(Configuration)
-                .AddControllers();
+                .AddControllers(o => 
+                {
+                    o.Filters.Add<ModelStateValidationFilterAttribute>();
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
