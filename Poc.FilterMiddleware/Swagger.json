@@ -8,12 +8,12 @@
         "TermsOfService": null,
         "Contact": {
           "Name": "Rodrigo Fonseca",
-          "Email": "rigo.maf@gmail.com",
-          "Url": ""
+          "Email": "",
+          "Url": "https://www.linkedin.com/in/rigomaf/"
         },
         "License": {
           "Name": "MIT",
-          "Url": "https://bitbucket.org/RMAF/Homeoffer/src/master/LICENSE"
+          "Url": "https://github.com/RodrigoMaf/FiltersAndMiddlewares"
         }
       }
       ////,
