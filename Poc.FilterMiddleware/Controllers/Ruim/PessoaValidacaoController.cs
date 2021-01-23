@@ -24,7 +24,7 @@ namespace Poc.FilterMiddleware.Api.Controllers.Ruim
 
         // POST api/<PessoaValidacaoController>
         [HttpPost]
-        public IActionResult Post([FromBody] PessoaFisica pessoa)
+        public IActionResult Post([FromBody] PessoaFisicaVM pessoa)
         {
 
             if (string.IsNullOrWhiteSpace(pessoa.Nome)) 

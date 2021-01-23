@@ -5,7 +5,7 @@ namespace Poc.FilterMiddleware.Application.Features
 {
     public class FeaturePessoa : IFeaturePessoa
     {
-        public void CadastraPessoaFisica(PessoaFisica pessoa)
+        public void CadastraPessoaFisica(PessoaFisicaVM pessoa)
         {
         }
     }

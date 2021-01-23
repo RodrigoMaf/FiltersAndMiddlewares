@@ -24,7 +24,7 @@ namespace Poc.FilterMiddleware.Api.Controllers.Ruim
 
         // POST api/<PessoaTrataErroController>
         [HttpPost]
-        public IActionResult Post([FromBody] PessoaFisica pessoa)
+        public IActionResult Post([FromBody] PessoaFisicaVM pessoa)
         {
             try
             {
