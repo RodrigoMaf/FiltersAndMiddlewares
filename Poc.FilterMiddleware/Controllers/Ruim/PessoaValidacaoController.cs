@@ -13,7 +13,7 @@ namespace Poc.FilterMiddleware.Api.Controllers.Ruim
     {
 
         /// <summary>Feature de processamento de pessoa</summary>
-        public IFeaturePessoa FeaturePessoa { get; set; }
+        public IFeaturePessoa FeaturePessoa { get; }
 
         /// <summary>Construtor da classe</summary>
         /// <param name="featurePessoa">Feature de processamento de pessoa</param>
@@ -27,7 +27,7 @@ namespace Poc.FilterMiddleware.Api.Controllers.Ruim
         public IActionResult Post([FromBody] PessoaFisicaVM pessoa)
         {
 
-            if (string.IsNullOrWhiteSpace(pessoa.Nome)) 
+            if (string.IsNullOrWhiteSpace(pessoa.Nome))
             {
                 return BadRequest("O Nome é obrigatório");
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Poc.FilterMiddleware.Domain.Contract;
 using Poc.FilterMiddleware.Domain.Features;
 
@@ -13,13 +14,18 @@ namespace Poc.FilterMiddleware.Api.Controllers.Ruim
     {
 
         /// <summary>Feature de processamento de pessoa</summary>
-        public IFeaturePessoa FeaturePessoa { get; set; }
+        public IFeaturePessoa FeaturePessoa { get; }
+
+
+        /// <summary>Logger da classe</summary>
+        private ILogger<PessoaTrataErroController> Logger { get; }
 
         /// <summary>Construtor da classe</summary>
         /// <param name="featurePessoa">Feature de processamento de pessoa</param>
-        public PessoaTrataErroController(IFeaturePessoa featurePessoa)
+        public PessoaTrataErroController(ILogger<PessoaTrataErroController> logger, IFeaturePessoa featurePessoa)
         {
             FeaturePessoa = featurePessoa;
+            Logger = logger;
         }
 
         // POST api/<PessoaTrataErroController>
@@ -54,10 +60,11 @@ namespace Poc.FilterMiddleware.Api.Controllers.Ruim
             }
             catch (Exception ex)
             {
+                Logger.LogError(ex.Message, ex);
                 return StatusCode(500, "Internal Server Error");
             }
 
-            
+
         }
     }
 }
