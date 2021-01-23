@@ -30,7 +30,8 @@ namespace Poc.FilterMiddleware.Api
                 .RegisterSwagger(Configuration)
                 .AddControllers(o => 
                 {
-                    o.Filters.Add<ModelStateValidationFilterAttribute>();
+                    // adicionando o filtro em contexto global
+                    //o.Filters.Add<ModelStateValidationFilterAttribute>();
                 });
         }
 
