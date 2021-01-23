@@ -14,7 +14,7 @@ namespace Poc.FilterMiddleware.Domain.ContractValidations
 
             RuleFor(o => o.Nascimento)
                 .Must(o => o.Date <= DateTime.Now.AddYears(-18).Date)
-                .WithMessage("O Nome é obrigatório");
+                .WithMessage("A pessoa tem que ter mais de 18 anos.");
 
             RuleFor(o => o.Cpf)
                 .Must(o => string.IsNullOrWhiteSpace(o) == false)

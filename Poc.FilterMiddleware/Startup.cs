@@ -28,6 +28,7 @@ namespace Poc.FilterMiddleware.Api
                 .RegisterFeatures()
                 .ConfigureSettingsSwagger(Configuration)
                 .RegisterSwagger(Configuration)
+                .RegisterValidations()
                 .AddControllers(o => 
                 {
                     // adicionando o filtro em contexto global
