@@ -32,7 +32,7 @@ namespace Poc.FilterMiddleware.Api.Controllers.Ruim
                 return BadRequest("O Nome é obrigatório");
             }
 
-            if (pessoa.Nascimento < DateTime.Now.AddYears(-18))
+            if (pessoa.Nascimento > DateTime.Now.AddYears(-18))
             {
                 return BadRequest("A pessoa tem que ter mais de 18 anos.");
             }
