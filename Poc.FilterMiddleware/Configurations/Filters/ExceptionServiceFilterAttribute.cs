@@ -9,9 +9,6 @@ namespace Poc.FilterMiddleware.Api.Configurations.Filters
     /// <summary>Filtro para tratar erros inesperados do sistema</summary>
     public class ExceptionServiceFilterAttribute : ExceptionFilterAttribute
     {
-        /// <summary>Default error message prefix</summary>
-        private const string ERROR_MESSAGE = "An error has occurred";
-
         /// <summary>Logger do sistema para o filtro</summary>
         private ILogger<ExceptionServiceFilterAttribute> Logger { get; }
 

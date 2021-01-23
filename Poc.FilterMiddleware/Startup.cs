@@ -33,6 +33,7 @@ namespace Poc.FilterMiddleware.Api
                 {
                     // adicionando o filtro em contexto global
                     //o.Filters.Add<ModelStateValidationFilterAttribute>();
+                    //o.Filters.Add<ExceptionServiceFilterAttribute>();
                 });
         }
 
