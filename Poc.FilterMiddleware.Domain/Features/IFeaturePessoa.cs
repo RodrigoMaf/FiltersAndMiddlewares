@@ -6,6 +6,6 @@ namespace Poc.FilterMiddleware.Domain.Features
     public interface IFeaturePessoa
     {
         /// <summary>Processa do cadastro de uma pessoa</summary>
-        void CadastraPessoaFisica(PessoaFisica pessoa);
+        void CadastraPessoaFisica(PessoaFisicaVM pessoa);
     }
 }

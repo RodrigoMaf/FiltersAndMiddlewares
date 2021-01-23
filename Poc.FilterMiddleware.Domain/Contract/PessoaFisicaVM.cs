@@ -3,7 +3,7 @@
 namespace Poc.FilterMiddleware.Domain.Contract
 {
     /// <summary>Dados de exemplo de pessoa</summary>
-    public class PessoaFisica
+    public class PessoaFisicaVM
     {
         /// <summary>Nome da pessoa</summary>
         public string Nome { get; set; }
