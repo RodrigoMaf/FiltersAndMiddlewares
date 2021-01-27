@@ -37,7 +37,6 @@ namespace Poc.FilterMiddleware.Api.Controllers
         {
             FeaturePessoa.CadastraPessoaFisica(pessoa);
 
-            throw new Exception("erro");
             return Ok();
         }
     }
